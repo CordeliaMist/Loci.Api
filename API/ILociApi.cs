@@ -8,6 +8,9 @@ public interface ILociApi : ILociApiBase
     /// <inheritdoc cref="ILociApiRegistry"/>
     public ILociApiRegistry Registry { get; }
 
+    /// <inheritdoc cref="ILociApiStatusManager"/>
+    public ILociApiStatusManager StatusManager { get; }
+
     ///<inheritdoc cref="ILociApiStatuses" />
     public ILociApiStatuses Statuses { get; }
 
