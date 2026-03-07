@@ -18,7 +18,7 @@
     <PropertyGroup>
         <Use_DalamudPackager>false</Use_DalamudPackager>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
       <DocumentationFile>bin\x64\Debug\Loci.Api.xml</DocumentationFile>
     </PropertyGroup>
