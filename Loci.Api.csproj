@@ -1,0 +1,35 @@
+﻿<Project Sdk="Dalamud.NET.Sdk/14.0.1">
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Version>0.0.1.0</Version>
+        <Title>Loci.Api</Title>
+        <Authors>Cordelia, AndrielChaoti</Authors>
+        <Description>Provides functions for interacting with Loci statuses.</Description>
+        <Copyright>Copyright © 2026</Copyright>
+        <RepositoryUrl>https://github.com/CordeliaMist/Loci.Api</RepositoryUrl>
+        <Company>Loci</Company>
+        <AssemblyVersion>0.0.1.0</AssemblyVersion>
+        <FileVersion>0.0.1.0</FileVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Use_DalamudPackager>false</Use_DalamudPackager>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+      <DocumentationFile>bin\x64\Debug\Loci.Api.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+      <DocumentationFile>bin\x64\Release\Loci.Api.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Enums\" />
+      <Folder Include="Helpers\" />
+      <Folder Include="IPC\" />
+    </ItemGroup>
+
+</Project>
