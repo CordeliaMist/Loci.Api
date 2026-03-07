@@ -3,7 +3,7 @@ using LociApi.Enums;
 namespace LociApi.Api;
 
 /// <summary>
-/// Functions to manage registry in the status manager.
+///   Functions to manage registry in the status manager.
 /// </summary>
 public interface ILociApiRegistry
 {

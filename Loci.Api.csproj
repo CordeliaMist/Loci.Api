@@ -27,4 +27,8 @@
       <DocumentationFile>bin\x64\Release\Loci.Api.xml</DocumentationFile>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Content Include=".editorconfig" />
+    </ItemGroup>
+
 </Project>

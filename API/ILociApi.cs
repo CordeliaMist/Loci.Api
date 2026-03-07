@@ -1,7 +1,7 @@
 namespace LociApi.Api;
 
 /// <summary>
-/// The full API available for Loci.
+///   The full API available for Loci.
 /// </summary>
 public interface ILociApi : ILociApiBase
 {

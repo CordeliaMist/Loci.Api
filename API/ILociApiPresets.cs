@@ -1,9 +1,25 @@
+using LociApi.Enums;
+
 namespace LociApi.Api;
 
 /// <summary>
-/// Functions for interacting with presets (groups of statuses).
+///   Functions for interacting with presets (groups of statuses).
 /// </summary>
 public interface ILociApiPresets
 {
+    #region Preset Data
 
+    public (LociApiEc, LociPresetInfo) GetPresetInfo(Guid presetId);
+    public (LociApiEc, List<LociPresetInfo>) GetAllPresetInfo();
+
+    #endregion
+
+    #region Preset Interactions
+
+    public (LociApiEc, object) ApplyPresetByPtr(Guid preset, nint ptr);
+    public (LociApiEc, object) ApplyPresetByName(Guid preset, string name);
+    public (LociApiEc, object) ApplyPresetsByPtr(List<Guid> presets, nint ptr);
+    public (LociApiEc, object) ApplyPresetsByName(List<Guid> presets, string name);
+
+    #endregion
 }
