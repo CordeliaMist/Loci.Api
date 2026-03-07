@@ -1,4 +1,4 @@
-namespace Loci.Api.API;
+namespace LociApi.Api;
 
 /// <summary>
 /// Functions for interacting with presets (groups of statuses).

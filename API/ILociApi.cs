@@ -1,4 +1,4 @@
-namespace Loci.Api.API;
+namespace LociApi.Api;
 
 /// <summary>
 /// The full API available for Loci.

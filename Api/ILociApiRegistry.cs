@@ -1,6 +1,6 @@
-using Loci.Api.Enums;
+using LociApi.Enums;
 
-namespace Loci.Api.API;
+namespace LociApi.Api;
 
 /// <summary>
 /// Functions to manage registry in the status manager.
@@ -12,7 +12,7 @@ public interface ILociApiRegistry
     /// </summary>
     /// <param name="ptr">The pointer referring to the player actor to add as managed.</param>
     /// <param name="provider">A unique identifier shared across your plugin.</param>
-    /// <returns><see cref="LociApiEc"/>: TargetNotFound, Success.</returns>
+    /// <returns><see cref="LociApiEc"/>: TargetInvalid, TargetNotFound, Success.</returns>
     /// <remarks>  The passed identifier is a string that will be visible to users of Loci, so this should be the name of your plugin. </remarks>
     public LociApiEc RegisterActorByPtr(nint ptr, string provider);
 
@@ -21,7 +21,7 @@ public interface ILociApiRegistry
     /// </summary>
     /// <param name="name"> The player's name with world, in the format "First Last@World" </param>
     /// <param name="provider">A unique identifier shared across your plugin.</param>
-    /// <returns><see cref="LociApiEc"/>: TargetNotFound, Success.</returns>
+    /// <returns><see cref="LociApiEc"/>: TargetInvalid, TargetNotFound, Success.</returns>
     /// <remarks>  The passed identifier is a string that will be visible to users of Loci, so this should be the name of your plugin. </remarks>
     public LociApiEc RegisterActorByName(string name, string provider);
 

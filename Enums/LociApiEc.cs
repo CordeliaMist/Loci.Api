@@ -1,4 +1,4 @@
-namespace Loci.Api.Enums;
+namespace LociApi.Enums;
 
 /// <summary>
 ///   Return codes for API functions.
