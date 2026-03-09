@@ -1,5 +1,4 @@
 using LociApi.Enums;
-
 namespace LociApi.Api;
 
 /// <summary>
