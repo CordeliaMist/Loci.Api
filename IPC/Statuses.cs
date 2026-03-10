@@ -3,7 +3,7 @@ using LociApi.Api;
 using LociApi.Enums;
 using LociApi.Helpers;
 
-namespace LociApi.IPC;
+namespace LociApi.Ipc;
 
 /// <inheritdoc cref="ILociApiStatuses.GetStatusInfo"/>
 public sealed class GetStatusInfo(IDalamudPluginInterface pi)
