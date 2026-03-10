@@ -1,3 +1,4 @@
+using IPCGenerator;
 using LociApi.Enums;
 namespace LociApi.Api;
 
@@ -14,6 +15,9 @@ public interface ILociApiStatuses
     /// <returns> <see cref="LociApiEc" />:DataInvalid, DataNotFound, Success </returns>
     public (LociApiEc, LociStatusInfo) GetStatusInfo(Guid guid);
 
+    /// <summary>
+    /// <seealso cref="GetStatusInfo" />
+    /// </summary>
     /// <returns> The list of LociStatusInfo tuples for all created Statuses. </returns>
     public List<LociStatusInfo> GetStatusInfoList();
 
@@ -95,12 +99,12 @@ public interface ILociApiStatuses
     ///   Triggers whenever a saved status is modified within the editor.
     /// </summary>
     public event StatusUpdatedDelegate? StatusUpdated;
-    
+
     /// <summary>
     ///   Occurs whenever a status has its ChainTrigger condition met. <para />
     ///   Provides the GUID of the status, the GUID to be chained, and what type of chain the GUID is.
     /// </summary>
     public event ChainTriggerHitDelegate? ChainTriggerHit;
 
-    // Can add other events here as needed later..
+    // Can add other events here as needed later...
 }
