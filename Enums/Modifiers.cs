@@ -2,17 +2,52 @@ using System.Runtime.CompilerServices;
 
 namespace LociApi.Enums;
 
+/// <summary>
+///   Defines the behavior of a LociStatus 
+/// </summary>
 [Flags]
-public enum Modifiers : uint // use uint to allow for futureproof options.
+public enum Modifiers : uint
 {
-    None = 0,
-    CanDispel           = 1u << 0, // Can be dispelled.
-    StacksIncrease      = 1u << 1, // Stackable statuses, when reapplied, can increase their stack count.
-    StacksRollOver      = 1u << 2, // When a stack reaches its cap, it starts over and counts up again.
-    PersistExpireTime   = 1u << 3, // When reapplied, the expire time remains the same.
-    StacksMoveToChain   = 1u << 4, // When a ChainStatus trigger occurs, the current stacks are is carried over.
-    StacksCarryToChain  = 1u << 5, // When the stacks increase and hit max, remaining stacks carry over.
-    PersistAfterTrigger = 1u << 6, // When a ChainStatus trigger occurs, the original status remains.
+    /// <summary>
+    ///   No special behavior.
+    /// </summary>
+    None                = 0,
+
+    /// <summary>
+    ///   The status is dispellable.
+    /// </summary>
+    CanDispel           = 1u << 0,
+
+    /// <summary>
+    ///   When reapplied, the status can increase its stack count, if stackable.
+    /// </summary>
+    StacksIncrease      = 1u << 1,
+
+    /// <summary>
+    ///   When a stack reaches its cap, it starts over and counts up again.  
+    /// </summary>
+    StacksRollOver      = 1u << 2,
+
+    /// <summary>
+    ///   When reapplied, the expire time remains the same instead of refreshing.
+    /// </summary>
+    PersistExpireTime   = 1u << 3,
+
+    /// <summary>
+    ///   When a ChainTrigger occurs, the current stacks are carried over to ChainedGUID. (Only for statuses)
+    /// </summary>
+    StacksMoveToChain   = 1u << 4,
+
+    /// <summary>
+    ///   When the stacks increase and hit max, the remaining carry over. (Only for statuses)
+    /// </summary>
+    StacksCarryToChain  = 1u << 5,
+
+    /// <summary>
+    ///   When ChainTrigger occurs, keep the status active and do not remove it.
+    /// </summary>
+    PersistAfterTrigger = 1u << 6,
+
     // Ideas: Persist original after chain trigger, ext.. 
 }
 

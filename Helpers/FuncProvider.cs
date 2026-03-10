@@ -5,7 +5,7 @@ using Dalamud.Plugin.Ipc;
 namespace LociApi.Helpers;
 
 /// <summary>
-/// Specialized disposable Provider for Funcs.
+///   Specialized disposable Provider for Funcs.
 /// </summary>
 public sealed class FuncProvider<TRet> : IDisposable
 {
@@ -109,100 +109,6 @@ public sealed class FuncProvider<T1, T2, T3, TRet> : IDisposable
         try
         {
             _provider = pi.GetIpcProvider<T1, T2, T3, TRet>(label);
-        }
-        catch (Exception e)
-        {
-            PluginLogHelper.WriteError(pi, $"Error registering IPC Provider for {label}\n{e}");
-            _provider = null;
-        }
-
-        _provider?.RegisterFunc(func);
-    }
-
-    public void Dispose()
-    {
-        _provider?.UnregisterFunc();
-        _provider = null;
-        GC.SuppressFinalize(this);
-    }
-
-    ~FuncProvider()
-        => Dispose();
-}
-
-/// <inheritdoc cref="FuncProvider{TRet}"/>
-public sealed class FuncProvider<T1, T2, T3, T4, TRet> : IDisposable
-{
-    private ICallGateProvider<T1, T2, T3, T4, TRet>? _provider;
-
-    public FuncProvider(IDalamudPluginInterface pi, string label, Func<T1, T2, T3, T4, TRet> func)
-    {
-        try
-        {
-            _provider = pi.GetIpcProvider<T1, T2, T3, T4, TRet>(label);
-        }
-        catch (Exception e)
-        {
-            PluginLogHelper.WriteError(pi, $"Error registering IPC Provider for {label}\n{e}");
-            _provider = null;
-        }
-
-        _provider?.RegisterFunc(func);
-    }
-
-    public void Dispose()
-    {
-        _provider?.UnregisterFunc();
-        _provider = null;
-        GC.SuppressFinalize(this);
-    }
-
-    ~FuncProvider()
-        => Dispose();
-}
-
-/// <inheritdoc cref="FuncProvider{TRet}"/>
-public sealed class FuncProvider<T1, T2, T3, T4, T5, TRet> : IDisposable
-{
-    private ICallGateProvider<T1, T2, T3, T4, T5, TRet>? _provider;
-
-    public FuncProvider(IDalamudPluginInterface pi, string label, Func<T1, T2, T3, T4, T5, TRet> func)
-    {
-        try
-        {
-            _provider = pi.GetIpcProvider<T1, T2, T3, T4, T5, TRet>(label);
-        }
-        catch (Exception e)
-        {
-            PluginLogHelper.WriteError(pi, $"Error registering IPC Provider for {label}\n{e}");
-            _provider = null;
-        }
-
-        _provider?.RegisterFunc(func);
-    }
-
-    public void Dispose()
-    {
-        _provider?.UnregisterFunc();
-        _provider = null;
-        GC.SuppressFinalize(this);
-    }
-
-    ~FuncProvider()
-        => Dispose();
-}
-
-
-/// <inheritdoc cref="FuncProvider{TRet}"/>
-public sealed class FuncProvider<T1, T2, T3, T4, T5, T6, TRet> : IDisposable
-{
-    private ICallGateProvider<T1, T2, T3, T4, T5, T6, TRet>? _provider;
-
-    public FuncProvider(IDalamudPluginInterface pi, string label, Func<T1, T2, T3, T4, T5, T6, TRet> func)
-    {
-        try
-        {
-            _provider = pi.GetIpcProvider<T1, T2, T3, T4, T5, T6, TRet>(label);
         }
         catch (Exception e)
         {

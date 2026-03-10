@@ -7,7 +7,6 @@ namespace LociApi.Api;
 /// </summary>
 public interface ILociApiStatusManager
 {
-
     // Gets the ClientPlayers Manager. This will always be valid.
     // Can return Success, TargetNotFound, TargetInvalid, DataNotFound
     public (LociApiEc, string?) GetManager();
@@ -33,11 +32,14 @@ public interface ILociApiStatusManager
     public LociApiEc ClearManagerByPtr(nint ptr);
     public LociApiEc ClearManagerByName(string charaName, string buddyName);
 
-    // Occurs whenever a manager was modified in any way.
+    /// <summary>
+    ///   Triggers when an actors StatusManager updates in any way.
+    /// </summary>
     public event Action<nint> ManagerChanged;
     
-    // When a status is added or removed from an actors Manager, this is fired.
-    // It attached the GUID in question, and how it effected the SM.
+    /// <summary>
+    ///   Triggers when the statuses of a StatusManager are updated in any way.
+    /// </summary>
     public event ManagerStatusesChangedDelegate? ManagerStatusesChanged;
 
     /// <summary>
