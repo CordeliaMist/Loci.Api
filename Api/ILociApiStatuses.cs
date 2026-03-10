@@ -1,9 +1,11 @@
+using IPCGenerator;
 using LociApi.Enums;
 namespace LociApi.Api;
 
 /// <summary>
 ///   All related interactions with statuses.
 /// </summary>
+[LociApiGenerator]
 public interface ILociApiStatuses
 {
     #region Aquisition
@@ -14,6 +16,9 @@ public interface ILociApiStatuses
     /// <returns> <see cref="LociApiEc" />:DataInvalid, DataNotFound, Success </returns>
     public (LociApiEc, LociStatusInfo) GetStatusInfo(Guid guid);
 
+    /// <summary>
+    /// <seealso cref="GetStatusInfo" />
+    /// </summary>
     /// <returns> The list of LociStatusInfo tuples for all created Statuses. </returns>
     public List<LociStatusInfo> GetStatusInfoList();
 
@@ -96,5 +101,5 @@ public interface ILociApiStatuses
     /// </summary>
     public event ChainTriggerHitDelegate? ChainTriggerHit;
 
-    // Can add other events here as needed later..
+    // Can add other events here as needed later...
 }

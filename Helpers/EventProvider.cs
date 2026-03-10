@@ -1,6 +1,7 @@
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace LociApi.Helpers;
 
