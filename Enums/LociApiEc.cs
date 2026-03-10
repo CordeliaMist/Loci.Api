@@ -51,6 +51,11 @@ public enum LociApiEc
     InvalidKey = 8,
 
     /// <summary>
+    ///   Operation was performed on Client, when it is not allowed
+    /// </summary>
+    ClientForbidden = 9,
+
+    /// <summary>
     ///   Another error not yet documented occured.
     /// </summary>
     UnkError = int.MaxValue,

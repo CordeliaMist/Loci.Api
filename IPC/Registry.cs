@@ -86,7 +86,7 @@ public sealed class UnregisterByName(IDalamudPluginInterface pi) : FuncSubscribe
 }
 
 /// <inheritdoc cref="ILociApiRegistry.UnregisterAll"/>
-public sealed class UnregisterAll(IDalamudPluginInterface pi) : FuncSubscriber<string, (int, int)>(pi, Label)
+public sealed class UnregisterAll(IDalamudPluginInterface pi) : FuncSubscriber<string, int>(pi, Label)
 {
     /// <summary> The label. </summary>
     public const string Label = $"Loci.{nameof(UnregisterAll)}";
@@ -95,19 +95,12 @@ public sealed class UnregisterAll(IDalamudPluginInterface pi) : FuncSubscriber<s
     public static ReadOnlySpan<byte> LabelU8 => "Loci.UnregisterAll"u8;
 
     /// <inheritdoc cref="ILociApiRegistry.UnregisterAll"/>
-    public new (LociApiEc, int) Invoke(string hostLabel)
-    {
-        var (ec, count) = base.Invoke(hostLabel);
-        return ((LociApiEc)ec, count);
-    }
+    public new int Invoke(string hostLabel)
+        => base.Invoke(hostLabel);
 
     /// <summary> Create a provider. </summary>
-    public static FuncProvider<string, (int, int)> Provider(IDalamudPluginInterface pi, ILociApiRegistry api)
-        => new(pi, Label, (a) =>
-        {
-            var (ec, count) = api.UnregisterAll(a);
-            return ((int)ec, count);
-        });
+    public static FuncProvider<string, int> Provider(IDalamudPluginInterface pi, ILociApiRegistry api)
+        => new(pi, Label, api.UnregisterAll);
 }
 
 /// <inheritdoc cref="ILociApiRegistry.GetHostsByPtr"/>

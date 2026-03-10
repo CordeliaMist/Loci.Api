@@ -55,7 +55,7 @@ public interface ILociApiRegistry
     public LociApiEc UnregisterByName(string charaName, string buddyName, string hostLabel);
 
     // Removes the host label from all actors.
-    public (LociApiEc, int) UnregisterAll(string hostLabel);
+    public int UnregisterAll(string hostLabel);
 
     // Retrieves the current Ephemeral hosts for a rendered actor.
     public List<string> GetHostsByPtr(nint address);
