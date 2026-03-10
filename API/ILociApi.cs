@@ -5,6 +5,9 @@ namespace LociApi.Api;
 /// </summary>
 public interface ILociApi : ILociApiBase
 {
+    /// <inheritdoc cref="ILociApiState"/>
+    public ILociApiState State { get; }
+
     /// <inheritdoc cref="ILociApiRegistry"/>
     public ILociApiRegistry Registry { get; }
 

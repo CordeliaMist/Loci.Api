@@ -16,34 +16,39 @@ public enum LociApiEc
     NoChange = 1,
 
     /// <summary>
+    ///   Used by bulk calls to indicate some operations worked, but not all. 
+    /// </summary>
+    PartialSuccess = 2,
+
+    /// <summary>
     ///   The requested target could not be located.
     /// </summary>
-    TargetNotFound = 2,
+    TargetNotFound = 3,
 
     /// <summary>
     ///   The requested target was null.
     /// </summary>
-    TargetInvalid = 3,
+    TargetInvalid = 4,
 
     /// <summary>
     ///   The data requested could not be found in Loci.
     /// </summary>
-    DataNotFound = 4,
+    DataNotFound = 5,
 
     /// <summary>
     ///   The GUID targetted for the interaction was not present in Loci.
     /// </summary>
-    DataInvalid = 5,
+    DataInvalid = 6,
 
     /// <summary>
     ///   The GUID targetted for modification was locked, and no lock was provided.
     /// </summary>
-    StatusLocked = 6,
+    ItemLocked = 7,
 
     /// <summary>
     ///   Attempted to apply or removed a locked status with an incorrect key.
     /// </summary>
-    InvalidKey = 7,
+    InvalidKey = 8,
 
     /// <summary>
     ///   Another error not yet documented occured.
