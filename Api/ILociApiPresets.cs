@@ -9,13 +9,16 @@ public interface ILociApiPresets
 {
     #region Aquisition
     /// <summary>
-    ///   Obtains the PresetInfo tuple for the provided <paramref name="guid"/>, if valid.
+    ///   Obtains the LociPresetInfo tuple for the provided <paramref name="guid"/>, if valid.
     /// </summary>
     /// <param name="guid">The <see cref="Guid"/> identifier of the preset to look up.</param>
     /// <returns> <see cref="LociApiEc" />:DataInvalid, DataNotFound, Success </returns>
     /// <remarks> PresetSummary contains the presets GUID, FileSystemPath, IconID, Name, and Description </remarks>
     public (LociApiEc, LociPresetInfo) GetPresetInfo(Guid guid);
 
+    /// <summary>
+    ///   Obtains the list of valid LociPresetInfo tuples.
+    /// </summary>
     /// <returns> The list of LociPresetInfo tuples for all created Presets. </returns>
     /// <remarks> PresetSummary contains the presets GUID, FileSystemPath, IconID, Name, and Description </remarks>
     public List<LociPresetInfo> GetPresetInfoList();
