@@ -5,9 +5,9 @@ using Dalamud.Plugin.Services;
 namespace LociApi.Helpers;
 
 /// <summary>
-/// Specialized disposable Subscriber for Events.<para />
-/// Subscriptions are wrapped to be individually exception-safe.<para/>
-/// Can be enabled and disabled.<para/>
+///   Specialized disposable Subscriber for Events.<para />
+///   Subscriptions are wrapped to be individually exception-safe.<para/>
+///   Can be enabled and disabled.<para/>
 /// </summary>
 public sealed class EventSubscriber : IDisposable
 {
@@ -37,8 +37,8 @@ public sealed class EventSubscriber : IDisposable
     }
 
     /// <summary>
-    /// Enable all currently subscribed actions registered with this EventSubscriber.
-    /// Does nothing if it is already enabled.
+    ///   Enable all currently subscribed actions registered with this EventSubscriber.
+    ///   Does nothing if it is already enabled.
     /// </summary>
     public void Enable()
     {
@@ -52,9 +52,9 @@ public sealed class EventSubscriber : IDisposable
     }
 
     /// <summary>
-    /// Disable all subscribed actions registered with this EventSubscriber.
-    /// Does nothing if it is already disabled.
-    /// Does not forget the actions, only disables them.
+    ///   Disable all subscribed actions registered with this EventSubscriber.
+    ///   Does nothing if it is already disabled.
+    ///   Does not forget the actions, only disables them.
     /// </summary>
     public void Disable()
     {
@@ -69,7 +69,7 @@ public sealed class EventSubscriber : IDisposable
     }
 
     /// <summary>
-    /// Add or remove an action to the IPC event, if it is valid.
+    ///   Add or remove an action to the IPC event, if it is valid.
     /// </summary>
     public event Action Event
     {

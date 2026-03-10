@@ -5,9 +5,9 @@ using Dalamud.Plugin.Services;
 namespace LociApi.Helpers;
 
 /// <summary>
-/// Specialized disposable Provider for Events.<para />
-/// Will execute the unsubscriber action on dispose if any is provided.<para />
-/// Can only be invoked and disposed.
+///   Specialized disposable Provider for Events.<para />
+///   Will execute the unsubscriber action on dispose if any is provided.<para />
+///   Can only be invoked and disposed.
 /// </summary>
 public sealed class EventProvider : IDisposable
 {
@@ -49,7 +49,9 @@ public sealed class EventProvider : IDisposable
         }
     }
 
-    /// <summary> Invoke the event.</summary>
+    /// <summary> 
+    ///   Invoke the event.
+    /// </summary>
     public void Invoke()
     {
         try
