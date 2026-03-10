@@ -45,8 +45,4 @@
     </PropertyGroup>
 
     <!--Remove? / Add to ignore?-->
-    <ItemGroup>
-        <None Include="README.md" Pack="true" PackagePath="\"/>
-        <Content Include=".editorconfig"/>
-    </ItemGroup>
 </Project>
