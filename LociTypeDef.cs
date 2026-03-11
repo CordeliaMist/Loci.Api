@@ -6,7 +6,6 @@
 // May try converting these to accessible structs / classes in the future.
 // But want to make sure it wont become a cast hell first.
 // --------
-
 global using LociStatusInfo = (
     int Version,
     System.Guid GUID,
@@ -15,14 +14,14 @@ global using LociStatusInfo = (
     string Description,
     string CustomVFXPath, // What VFX to show on application.
     long ExpireTicks, // Permanent if -1, referred to as 'NoExpire' in LociStatus
-    LociApi.Enums.StatusType Type, // Loci StatusType enum.
+    byte Type, // Loci StatusType enum.
     int Stacks, // Usually 1 when no stacks are used.
     int StackSteps, // How many stacks to add per reapplication.
     int StackToChain, // Used for chaining on set stacks
     uint Modifiers, // What can be customized, casted to uint from Modifiers (Dalamud IPC Rules)
     System.Guid ChainedGUID, // What status is chained to this one.
-    LociApi.Enums.ChainType ChainType, // What type of chaining is this for.
-    LociApi.Enums.ChainTrigger ChainTrigger, // What triggers the chained status.
+    byte ChainType, // What type of chaining is this for.
+    int ChainTrigger, // What triggers the chained status.
     string Applier, // Who applied the status.
     string Dispeller // When set, only this person can dispel your loci.
     );
@@ -41,8 +40,9 @@ global using LociEventInfo = (
     bool Enabled,
     string Title,
     string Description,
-    LociApi.Enums.LociEventType EventType
+    long EventType
     );
+
 global using LociStatusSummary = (
     System.Guid ID,
     string FSPath,
@@ -50,17 +50,19 @@ global using LociStatusSummary = (
     string Title,
     string Description
     );
+
 global using LociPresetSummary = (
     System.Guid ID,
     string FSPath, System.Collections.Generic.List<uint> IconIDs,
     string Title,
     string Description
     );
+
 global using LociEventSummary = (
     System.Guid ID,
     string FSPath,
     bool Enabled,
-    LociApi.Enums.LociEventType EventType,
+    long EventType,
     string Title,
     string Description
     );

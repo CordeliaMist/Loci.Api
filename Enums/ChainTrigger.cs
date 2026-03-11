@@ -1,7 +1,7 @@
 namespace LociApi.Enums;
 
 /// <summary> What caused a LociStatus to invoke its ChainedGUID </summary>
-public enum ChainTrigger
+public enum ChainTrigger : int
 {
     /// <summary> Occurs when the status is dispelled </summary>
     Dispel = 0,
