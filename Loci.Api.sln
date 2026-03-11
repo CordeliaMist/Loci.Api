@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loci.Api", "Loci.Api\Loci.Api.csproj", "{92F7B015-DF19-4DD1-A57D-CDD973B05D24}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loci.Api", "Loci.Api.csproj", "{92F7B015-DF19-4DD1-A57D-CDD973B05D24}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LociAPIGenerator", "LociAPIGenerator\LociAPIGenerator.csproj", "{CA968DB5-B7FB-4ECA-9CAC-A2B1A544A37C}"
 EndProject

@@ -29,14 +29,16 @@
         <Use_Dalamud_ImGui>false</Use_Dalamud_ImGui>
     </PropertyGroup>
 
+    <!-- don't build this... -->
     <ItemGroup>
-        <None Include="..\README.md" Pack="true" PackagePath=""/>
+        <Compile Remove="LociAPIGenerator\**" />
+        <EmbeddedResource Remove="LociAPIGenerator\**" />
+        <None Include="README.md" Pack="true" PackagePath="" />
     </ItemGroup>
 
+    <!--... because it's it's own project.-->
     <ItemGroup>
-        <ProjectReference Include="..\LociAPIGenerator\LociAPIGenerator.csproj"
-                  OutputItemType="Analyzer"
-                  ReferenceOutputAssembly="false"/>
+        <ProjectReference Include="LociAPIGenerator\LociAPIGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
 
     <!--Remove?-->
