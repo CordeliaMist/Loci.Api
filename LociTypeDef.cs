@@ -39,10 +39,19 @@ global using LociEventInfo = (
     int Version,
     System.Guid GUID,
     bool Enabled,
+    int Priority,
     string Title,
     string Description,
-    LociApi.Enums.LociEventType EventType
-    );
+    LociApi.Enums.LociEventType EventType,
+    LociApi.Enums.ChainType ReactionType,
+    System.Guid ChainedGUID,
+    uint IndicatedID,
+    short GearsetIdx,
+    LociApi.Enums.KnownDirection Direction,
+    byte IntendedUse,
+    string WhitelistedName
+);
+
 global using LociStatusSummary = (
     System.Guid ID,
     string FSPath,
@@ -50,12 +59,14 @@ global using LociStatusSummary = (
     string Title,
     string Description
     );
+
 global using LociPresetSummary = (
     System.Guid ID,
     string FSPath, System.Collections.Generic.List<uint> IconIDs,
     string Title,
     string Description
     );
+
 global using LociEventSummary = (
     System.Guid ID,
     string FSPath,
