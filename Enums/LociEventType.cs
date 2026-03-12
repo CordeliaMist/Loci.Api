@@ -1,8 +1,10 @@
 namespace LociApi.Enums;
 
-/// <summary> The interaction types that define a LociEvent. (WIP) </summary>
+/// <summary>
+///   The interaction types that define a LociEvent.
+/// </summary>
 /// <remarks> This is long in case we make it a flag enum. </remarks>
-public enum LociEventType : long
+public enum LociEventType : short
 {
     /// <summary> In relation to the Clients' current job. </summary>
     JobChange = 0,
