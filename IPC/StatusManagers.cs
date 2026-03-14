@@ -328,24 +328,6 @@ public sealed class ConvertLegacyData(IDalamudPluginInterface pi) : FuncSubscrib
         => new(pi, Label, api.ConvertLegacyData);
 }
 
-/// <inheritdoc cref="ILociApiStatusManager.ManagerOwnerChanged" />
-public static class ManagerOwnerChanged
-{
-    /// <summary> The label. </summary>
-    public const string Label = $"Loci.{nameof(ManagerOwnerChanged)}";
-
-    /// <summary> The label as a UTF8 string. </summary>
-    public static ReadOnlySpan<byte> LabelU8 => "Loci.ManagerOwnerChanged"u8;
-
-    /// <summary> Create a new event subscriber. </summary>
-    public static EventSubscriber<nint> Subscriber(IDalamudPluginInterface pi, params Action<nint>[] actions)
-        => new(pi, Label, actions);
-
-    /// <summary> Create a provider. </summary>
-    public static EventProvider<nint> Provider(IDalamudPluginInterface pi, ILociApiStatusManager api)
-        => new(pi, Label, (t => api.ManagerOwnerChanged += t, t => api.ManagerOwnerChanged -= t));
-}
-
 /// <inheritdoc cref="ILociApiStatusManager.ManagerChanged" />
 public static class ManagerChanged
 {

@@ -113,12 +113,6 @@ public interface ILociApiStatusManager
     public LociApiEc ClearManagerByName(string charaName, string buddyName);
 
     /// <summary>
-    ///   Fires when an actor is rendered or unrendered, causing a change in its associated ActorSM. <br />
-    ///   This is primarily used to help track state changes between Buddy actors, but can be helpful for Players too.
-    /// </summary>
-    public event Action<nint> ManagerOwnerChanged;
-
-    /// <summary>
     ///   Fires when a valid ActorSM Owner has changes applied to their StatusManager in any way.
     /// </summary>
     public event Action<nint> ManagerChanged;
