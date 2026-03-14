@@ -37,8 +37,9 @@ public interface ILociApiRegistry
     /// <summary> Remove an existing <paramref name="hostLabel" /> from an Actors StatusManager. </summary>
     /// <param name="address"> Address of the Player or Minion. </param>
     /// <param name="hostLabel"> The label that will be removed from the actors EphemeralHosts. (Should be a shared label) </param>
+    /// <param name="clearData"> If the data will be cleared after unregistered. </param>
     /// <returns> <see cref="LociApiEc" />: TargetInvalid, TargetNotFound, NoChange, Success </returns>
-    public LociApiEc UnregisterByPtr(nint address, string hostLabel);
+    public LociApiEc UnregisterByPtr(nint address, string hostLabel, bool clearData);
 
     /// <summary>
     ///     Remove an existing <paramref name="hostLabel" /> from an Actors StatusManager. Can be called when actor is not rendered, but their StatusManager must
@@ -47,13 +48,15 @@ public interface ILociApiRegistry
     /// <param name="charaName"> Expects '<c> Player Name@World </c>'. If using <paramref name="buddyName" />, only '<c> Player Name </c>' is used. </param>
     /// <param name="buddyName"> The NameString of a Minion/Pet/Companion. If empty, <paramref name="charaName" /> is expected to be '<c> Player Name@World </c>' </param>
     /// <param name="hostLabel"> The label that will be removed to the actors EphemeralHosts. (Should be a shared label) </param>
+    /// <param name="clearData"> If the data will be cleared after unregistered. </param>
     /// <returns> <see cref="LociApiEc" />: TargetInvalid, TargetNotFound, NoChange, Success. </returns>
-    public LociApiEc UnregisterByName(string charaName, string buddyName, string hostLabel);
+    public LociApiEc UnregisterByName(string charaName, string buddyName, string hostLabel, bool clearData);
 
     /// <summary>Removes the host label from All actors.</summary>
     /// <param name="hostLabel">The label that will be removed to the actors EphemeralHosts. (Should be a shared label)</param>
+    /// <param name="clearData"> If the data will be cleared after unregistered. </param>
     /// <returns>The number of actors altered.</returns>
-    public int UnregisterAll(string hostLabel);
+    public int UnregisterAll(string hostLabel, bool clearData);
 
     /// <summary>Retrieves the current Ephemeral hosts for a rendered actor.</summary>
     /// <param name="address">The address of the rendered actor.</param>
