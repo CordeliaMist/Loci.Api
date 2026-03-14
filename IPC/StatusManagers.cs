@@ -321,15 +321,29 @@ public sealed class ConvertLegacyData(IDalamudPluginInterface pi) : FuncSubscrib
 
     /// <inheritdoc cref="ILociApiStatusManager.ConvertLegacyData" />
     public new string Invoke(string legacyData)
-    {
-        return base.Invoke(legacyData);
-    }
+        => base.Invoke(legacyData);
 
     /// <summary> Create a provider. </summary>
     public static FuncProvider<string, string> Provider(IDalamudPluginInterface pi, ILociApiStatusManager api)
-    {
-        return new FuncProvider<string, string>(pi, Label, api.ConvertLegacyData);
-    }
+        => new(pi, Label, api.ConvertLegacyData);
+}
+
+/// <inheritdoc cref="ILociApiStatusManager.ManagerOwnerChanged" />
+public static class ManagerOwnerChanged
+{
+    /// <summary> The label. </summary>
+    public const string Label = $"Loci.{nameof(ManagerOwnerChanged)}";
+
+    /// <summary> The label as a UTF8 string. </summary>
+    public static ReadOnlySpan<byte> LabelU8 => "Loci.ManagerOwnerChanged"u8;
+
+    /// <summary> Create a new event subscriber. </summary>
+    public static EventSubscriber<nint> Subscriber(IDalamudPluginInterface pi, params Action<nint>[] actions)
+        => new(pi, Label, actions);
+
+    /// <summary> Create a provider. </summary>
+    public static EventProvider<nint> Provider(IDalamudPluginInterface pi, ILociApiStatusManager api)
+        => new(pi, Label, (t => api.ManagerOwnerChanged += t, t => api.ManagerOwnerChanged -= t));
 }
 
 /// <inheritdoc cref="ILociApiStatusManager.ManagerChanged" />
@@ -343,15 +357,11 @@ public static class ManagerChanged
 
     /// <summary> Create a new event subscriber. </summary>
     public static EventSubscriber<nint> Subscriber(IDalamudPluginInterface pi, params Action<nint>[] actions)
-    {
-        return new EventSubscriber<IntPtr>(pi, Label, actions);
-    }
+        => new(pi, Label, actions);
 
     /// <summary> Create a provider. </summary>
     public static EventProvider<nint> Provider(IDalamudPluginInterface pi, ILociApiStatusManager api)
-    {
-        return new EventProvider<IntPtr>(pi, Label, (t => api.ManagerChanged += t, t => api.ManagerChanged -= t));
-    }
+        => new(pi, Label, (t => api.ManagerChanged += t, t => api.ManagerChanged -= t));
 }
 
 /// <inheritdoc cref="ILociApiStatusManager.ManagerStatusesChanged" />
@@ -365,15 +375,11 @@ public static class ManagerStatusesChanged
 
     /// <summary> Create a new event subscriber. </summary>
     public static EventSubscriber<nint, Guid, StatusChangeType> Subscriber(IDalamudPluginInterface pi, params Action<nint, Guid, StatusChangeType>[] actions)
-    {
-        return new EventSubscriber<IntPtr, Guid, StatusChangeType>(pi, Label, actions);
-    }
+        => new(pi, Label, actions);
 
     /// <summary> Create a provider. </summary>
     public static EventProvider<nint, Guid, StatusChangeType> Provider(IDalamudPluginInterface pi, ILociApiStatusManager api)
-    {
-        return new EventProvider<IntPtr, Guid, StatusChangeType>(pi, Label, t => api.ManagerStatusesChanged += t.Invoke, t => api.ManagerStatusesChanged -= t.Invoke);
-    }
+        => new(pi, Label, t => api.ManagerStatusesChanged += t.Invoke, t => api.ManagerStatusesChanged -= t.Invoke);
 }
 
 /// <inheritdoc cref="ILociApiStatusManager.ApplyToTargetSent" />
@@ -387,13 +393,9 @@ public static class ApplyToTargetSent
 
     /// <summary> Create a new event subscriber. </summary>
     public static EventSubscriber<nint, string, List<LociStatusInfo>> Subscriber(IDalamudPluginInterface pi, params Action<nint, string, List<LociStatusInfo>>[] actions)
-    {
-        return new EventSubscriber<IntPtr, string, List<LociStatusInfo>>(pi, Label, actions);
-    }
+        => new(pi, Label, actions);
 
     /// <summary> Create a provider. </summary>
     public static EventProvider<nint, string, List<LociStatusInfo>> Provider(IDalamudPluginInterface pi, ILociApiStatusManager api)
-    {
-        return new EventProvider<IntPtr, string, List<LociStatusInfo>>(pi, Label, t => api.ApplyToTargetSent += t.Invoke, t => api.ApplyToTargetSent -= t.Invoke);
-    }
+        => new(pi, Label, t => api.ApplyToTargetSent += t.Invoke, t => api.ApplyToTargetSent -= t.Invoke);
 }

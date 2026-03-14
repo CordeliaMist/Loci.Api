@@ -5,8 +5,6 @@ namespace LociApi.Api;
 /// <summary> Functions for interacting with the status manager. </summary>
 public interface ILociApiStatusManager
 {
-    // Gets the ClientPlayers Manager. This will always be valid.
-    // Can return Success, TargetNotFound, TargetInvalid, DataNotFound
     /// <summary>Get the client player's status manager</summary>
     /// <returns>
     ///     A tuple that contains the status manager as well as an error code indicating the reason for failure, or Success.<br /> (Possible
@@ -52,9 +50,6 @@ public interface ILociApiStatusManager
     /// <returns>The list containing all available statuses. Returns an empty list on failure.</returns>
     public List<LociStatusInfo> GetManagerInfoByName(string charaName, string buddyName);
 
-    //  Informs with return code how that went.
-    // Returns Success, NoChange, TargetNotFound, TargetInvalid, DataNotFound, DataInvalid.
-    // (Fail if the client and locks are present)
     /// <summary>Attempt to set an actors status manager.</summary>
     /// <param name="base64Data">The status manager data to set</param>
     /// <returns>
@@ -84,8 +79,6 @@ public interface ILociApiStatusManager
     /// </returns>
     public LociApiEc SetManagerByName(string charaName, string buddyName, string base64Data);
 
-    // Same rules as above, but for clearing.
-    // For clearing, if the client, do not clear locked statuses, but allow method?
     /// <summary>Converts the legacy StatusManager format in base64 to Loci's data format.
     ///     <para />
     ///     This is intended to help provide conversion compatibility for those using Loci to see sent legacy data, even if it cannot be recipocated.</summary>
@@ -108,10 +101,10 @@ public interface ILociApiStatusManager
     /// </returns>
     public LociApiEc ClearManagerByPtr(nint ptr);
 
-    /// <summary>Attempt to clear an actors status manager.</summary>
-    /// <param name="charaName">
-    ///     The name of the player in <c>'First Last@World'</c> format. <b>Omit <c>'@World'</c> when providing <paramref name="buddyName" /></b>
-    /// </param>
+    /// <summary>
+    ///   Attempt to clear an actors status manager.
+    /// </summary>
+    /// <param name="charaName"> The name of the player in <c>'First Last@World'</c> format. <b>Omit <c>'@World'</c> when providing <paramref name="buddyName" /></b></param>
     /// <param name="buddyName"> The name of the companion or mount to edit, or an empty string. </param>
     /// <returns>
     ///     An error code indicating the reason for failure, or Success.<br /> (Possible <see cref="LociApiEc" /> errors: NoChange, TargetNotFound, TargetInvalid,
@@ -119,13 +112,25 @@ public interface ILociApiStatusManager
     /// </returns>
     public LociApiEc ClearManagerByName(string charaName, string buddyName);
 
-    /// <summary> Triggers when an actors StatusManager updates in any way. </summary>
+    /// <summary>
+    ///   Fires when an actor is rendered or unrendered, causing a change in its associated ActorSM. <br />
+    ///   This is primarily used to help track state changes between Buddy actors, but can be helpful for Players too.
+    /// </summary>
+    public event Action<nint> ManagerOwnerChanged;
+
+    /// <summary>
+    ///   Fires when a valid ActorSM Owner has changes applied to their StatusManager in any way.
+    /// </summary>
     public event Action<nint> ManagerChanged;
 
-    /// <summary> Triggers when the statuses of a StatusManager are updated in any way. </summary>
+    /// <summary>
+    ///   Triggers when the statuses of a StatusManager are updated in any way.
+    /// </summary>
     public event ManagerStatusesChangedDelegate? ManagerStatusesChanged;
 
-    /// <summary> Triggered when ApplyToTarget in the Status or Preset tab of Loci is used on a target that is Ephemeral. </summary>
+    /// <summary>
+    ///   Triggered when ApplyToTarget in the Status or Preset tab of Loci is used on a target that is Ephemeral.
+    /// </summary>
     /// <remarks> This does not fire if applied to a non-ephemeral target. </remarks>
     public event ApplyToTargetDelegate? ApplyToTargetSent;
 }
