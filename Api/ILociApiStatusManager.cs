@@ -115,12 +115,7 @@ public interface ILociApiStatusManager
     /// <summary>
     ///   Fires when a valid ActorSM Owner has changes applied to their StatusManager in any way.
     /// </summary>
-    public event Action<nint> ManagerChanged;
-
-    /// <summary>
-    ///   Triggers when the statuses of a StatusManager are updated in any way.
-    /// </summary>
-    public event ManagerStatusesChangedDelegate? ManagerStatusesChanged;
+    public event Action<nint, ManagerChangeType> ManagerChanged;
 
     /// <summary>
     ///   Triggered when ApplyToTarget in the Status or Preset tab of Loci is used on a target that is Ephemeral.

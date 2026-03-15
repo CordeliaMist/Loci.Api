@@ -338,30 +338,12 @@ public static class ManagerChanged
     public static ReadOnlySpan<byte> LabelU8 => "Loci.ManagerChanged"u8;
 
     /// <summary> Create a new event subscriber. </summary>
-    public static EventSubscriber<nint> Subscriber(IDalamudPluginInterface pi, params Action<nint>[] actions)
+    public static EventSubscriber<nint, ManagerChangeType> Subscriber(IDalamudPluginInterface pi, params Action<nint, ManagerChangeType>[] actions)
         => new(pi, Label, actions);
 
     /// <summary> Create a provider. </summary>
-    public static EventProvider<nint> Provider(IDalamudPluginInterface pi, ILociApiStatusManager api)
+    public static EventProvider<nint, ManagerChangeType> Provider(IDalamudPluginInterface pi, ILociApiStatusManager api)
         => new(pi, Label, (t => api.ManagerChanged += t, t => api.ManagerChanged -= t));
-}
-
-/// <inheritdoc cref="ILociApiStatusManager.ManagerStatusesChanged" />
-public static class ManagerStatusesChanged
-{
-    /// <summary> The label. </summary>
-    public const string Label = $"Loci.{nameof(ManagerStatusesChanged)}";
-
-    /// <summary> The label as a UTF8 string. </summary>
-    public static ReadOnlySpan<byte> LabelU8 => "Loci.ManagerStatusesChanged"u8;
-
-    /// <summary> Create a new event subscriber. </summary>
-    public static EventSubscriber<nint, Guid, StatusChangeType> Subscriber(IDalamudPluginInterface pi, params Action<nint, Guid, StatusChangeType>[] actions)
-        => new(pi, Label, actions);
-
-    /// <summary> Create a provider. </summary>
-    public static EventProvider<nint, Guid, StatusChangeType> Provider(IDalamudPluginInterface pi, ILociApiStatusManager api)
-        => new(pi, Label, t => api.ManagerStatusesChanged += t.Invoke, t => api.ManagerStatusesChanged -= t.Invoke);
 }
 
 /// <inheritdoc cref="ILociApiStatusManager.ApplyToTargetSent" />
