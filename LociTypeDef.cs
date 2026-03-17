@@ -26,6 +26,7 @@ global using LociStatusInfo = (
     string Applier, // Who applied the status.
     string Dispeller // When set, only this person can dispel your loci.
     );
+
 global using LociPresetInfo = (
     int Version,
     System.Guid GUID, System.Collections.Generic.List<System.Guid> Statuses,

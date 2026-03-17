@@ -1,14 +1,14 @@
 namespace LociApi.Enums;
 
 /// <summary>
-///   The interaction types that define a LociEvent.
+///   The interaction types that define a LociEvent
 /// </summary>
 public enum LociEventType : short
 {
-    /// <summary> In relation to the Clients' current job. </summary>
+    /// <summary> In relation to the Clients' current job </summary>
     JobChange = 0,
 
-    /// <summary> Related to detection of recieving or losing buff or debuffs from the base game. </summary>
+    /// <summary> Related to detection of recieving or losing buff or debuffs from the base game </summary>
     GameBuffDebuff = 1,
 
     /// <summary> In relation to emote usage. </summary>
@@ -17,9 +17,12 @@ public enum LociEventType : short
     /// <summary> In relation to being in a specific zone or content type </summary>
     ZoneBased = 3,
 
-    /// <summary> In relation to the Clients current online status. </summary>
+    /// <summary> In relation to the Clients current online status </summary>
     OnlineStatus = 4,
 
     /// <summary> In relation to the time of day (can be IRL or Eorzean time) </summary>
-    TimeOfDay = 5
+    TimeOfDay = 5,
+
+    /// <summary> In relation to your current race </summary>
+    Race = 6,
 }

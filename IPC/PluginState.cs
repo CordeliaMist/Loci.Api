@@ -16,16 +16,32 @@ public sealed class ApiVersion(IDalamudPluginInterface pi)
 
     /// <inheritdoc cref="ILociApiBase.ApiVersion" />
     public new (int Major, int Minor) Invoke()
-    {
-        return base.Invoke();
-    }
+        => base.Invoke();
 
     /// <summary> Create a provider. </summary>
     public static FuncProvider<(int, int)> Provider(IDalamudPluginInterface pi, ILociApiBase api)
-    {
-        return new FuncProvider<(int, int)>(pi, Label, () => api.ApiVersion);
-    }
+        => new(pi, Label, () => api.ApiVersion);
 }
+
+/// <inheritdoc cref="ILociApiBase.TupleVersion" />
+public sealed class TupleVersion(IDalamudPluginInterface pi)
+    : FuncSubscriber<int>(pi, Label)
+{
+    /// <summary> The label. </summary>
+    public const string Label = $"Loci.{nameof(TupleVersion)}";
+
+    /// <summary> The label as a UTF8 string. </summary>
+    public static ReadOnlySpan<byte> LabelU8 => "Loci.TupleVersion"u8;
+
+    /// <inheritdoc cref="ILociApiBase.TupleVersion" />
+    public new int Invoke()
+        => base.Invoke();
+
+    /// <summary> Create a provider. </summary>
+    public static FuncProvider<int> Provider(IDalamudPluginInterface pi, ILociApiBase api)
+        => new(pi, Label, () => api.TupleVersion);
+}
+
 
 /// <inheritdoc cref="ILociApiBase.IsEnabled" />
 public sealed class IsEnabled(IDalamudPluginInterface pi)
