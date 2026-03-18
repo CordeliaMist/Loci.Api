@@ -44,6 +44,7 @@ global using LociEventInfo = (
     string Title,
     string Description,
     LociApi.Enums.LociEventType EventType,
+    LociApi.Enums.EventBehavior Behavior,
     LociApi.Enums.ChainType ReactionType,
     System.Guid ReactionGUID,
     string ReactionTarget,
