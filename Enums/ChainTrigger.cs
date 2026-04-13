@@ -13,5 +13,8 @@ public enum ChainTrigger : int
     TimerExpired = 2,
 
     /// <summary> Occurs when a stackable status reaches a defined stack count </summary>
-    HitSetStacks = 3
+    HitSetStacks = 3,
+
+    /// <summary> Occurs when a status was clicked off. </summary>
+    ClickedOff = 4
 }
