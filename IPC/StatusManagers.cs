@@ -328,6 +328,23 @@ public sealed class ConvertLegacyData(IDalamudPluginInterface pi) : FuncSubscrib
         => new(pi, Label, api.ConvertLegacyData);
 }
 
+/// <inheritdoc cref="ILociApiStatusManager.ConvertToLegacyData" />
+public sealed class ConvertToLegacyData(IDalamudPluginInterface pi) : FuncSubscriber<string, string>(pi, Label)
+{
+    /// <summary> The label. </summary>
+    public const string Label = $"Loci.{nameof(ConvertToLegacyData)}";
+    /// <summary> The label as a UTF8 string. </summary>
+    public static ReadOnlySpan<byte> LabelU8 => "Loci.ConvertToLegacyData"u8;
+
+    /// <inheritdoc cref="ILociApiStatusManager.ConvertToLegacyData" />
+    public new string Invoke(string lociData)
+        => base.Invoke(lociData);
+
+    /// <summary> Create a provider. </summary>
+    public static FuncProvider<string, string> Provider(IDalamudPluginInterface pi, ILociApiStatusManager api)
+        => new(pi, Label, api.ConvertToLegacyData);
+}
+
 /// <inheritdoc cref="ILociApiStatusManager.ManagerChanged" />
 public static class ManagerChanged
 {

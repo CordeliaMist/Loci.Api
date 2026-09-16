@@ -79,12 +79,19 @@ public interface ILociApiStatusManager
     /// </returns>
     public LociApiEc SetManagerByName(string charaName, string buddyName, string base64Data);
 
-    /// <summary>Converts the legacy StatusManager format in base64 to Loci's data format.
-    ///     <para />
-    ///     This is intended to help provide conversion compatibility for those using Loci to see sent legacy data, even if it cannot be recipocated.</summary>
+    /// <summary>
+    ///   Converts the legacy StatusManager format in base64 to Loci's data format. <para />
+    ///   This is intended to help provide conversion compatibility for those using Loci to see sent legacy data, even if it cannot be recipocated.</summary>
     /// <param name="base64Data"> The legacy data formatted base64. </param>
     /// <returns> The converted LociManagerBase64 </returns>
     public string ConvertLegacyData(string base64Data);
+
+    /// <summary>
+    ///   Migrate LociData back to MoodleData 
+    /// </summary>
+    /// <param name="lociBase64Data"> The loci data formatted base64. </param>
+    /// <returns> The converted MoodlesBase64 </returns>
+    public string ConvertToLegacyData(string lociBase64Data);
 
     /// <summary>Attempt to clear an actors status manager.</summary>
     /// <returns>
